@@ -156,6 +156,79 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-关于delete关键字的用法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/23/关于delete关键字的用法/">关于delete关键字的用法</a>
+    </h1>
+  
+
+        
+        <a href="/2017/09/23/关于delete关键字的用法/" class="archive-article-date">
+  	<time datetime="2017-09-23T05:52:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="delete关键字"><a href="#delete关键字" class="headerlink" title="delete关键字"></a>delete关键字</h1><p>用法: delete 对象.属性</p>
+<p>###1.可以删除未用var声明的变量</p>
+<pre><code>test = &quot;这是一个未使用var定义的变量&quot;;
+console.log(test);
+delete test;
+//    console.log(test);// 报错
+console.log(window.test);// undefined
+</code></pre><p>###2.删除指定对象的属性<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//删除对象中指定的属性</div><div class="line">var obj = &#123;</div><div class="line">    name : &quot;zs&quot;,</div><div class="line">    age : 20</div><div class="line">&#125;;</div><div class="line"></div><div class="line">console.log(obj.name);//zs</div><div class="line">console.log(delete obj.name);// true</div><div class="line">console.log(obj.name); // undefined</div></pre></td></tr></table></figure></p>
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意:"></a>注意:</h4><pre><code>3.未用var声明的变量,自动成为window的属性
+
+4.delete返回一个布尔值(能删除true,否则false)
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/09/23/关于delete关键字的用法/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-js排他的方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

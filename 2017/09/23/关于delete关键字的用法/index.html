@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017 | Zooz&#39;s blog</title>
+  <title>关于delete关键字的用法 | Zooz&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Zooz&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/archives/2017/index.html">
+  <meta name="description" content="delete关键字用法: delete 对象.属性 ###1.可以删除未用var声明的变量 test = &amp;quot;这是一个未使用var定义的变量&amp;quot;; console.log(test); delete test; //    console.log(test);// 报错 console.log(window.test);// undefined ###2.删除指定对象的属性1234">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于delete关键字的用法">
+<meta property="og:url" content="http://yoursite.com/2017/09/23/关于delete关键字的用法/index.html">
 <meta property="og:site_name" content="Zooz&#39;s blog">
+<meta property="og:description" content="delete关键字用法: delete 对象.属性 ###1.可以删除未用var声明的变量 test = &amp;quot;这是一个未使用var定义的变量&amp;quot;; console.log(test); delete test; //    console.log(test);// 报错 console.log(window.test);// undefined ###2.删除指定对象的属性1234">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-09-23T05:53:06.435Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Zooz&#39;s blog">
+<meta name="twitter:title" content="关于delete关键字的用法">
+<meta name="twitter:description" content="delete关键字用法: delete 对象.属性 ###1.可以删除未用var声明的变量 test = &amp;quot;这是一个未使用var定义的变量&amp;quot;; console.log(test); delete test; //    console.log(test);// 报错 console.log(window.test);// undefined ###2.删除指定对象的属性1234">
   
     <link rel="alternative" href="/atom.xml" title="Zooz&#39;s blog" type="application/atom+xml">
   
@@ -154,76 +158,166 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-关于delete关键字的用法" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      关于delete关键字的用法
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/23/关于delete关键字的用法/" class="archive-article-date">
+
+        
+        <a href="/2017/09/23/关于delete关键字的用法/" class="archive-article-date">
   	<time datetime="2017-09-23T05:52:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-23</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/23/关于delete关键字的用法/">关于delete关键字的用法</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="delete关键字"><a href="#delete关键字" class="headerlink" title="delete关键字"></a>delete关键字</h1><p>用法: delete 对象.属性</p>
+<p>###1.可以删除未用var声明的变量</p>
+<pre><code>test = &quot;这是一个未使用var定义的变量&quot;;
+console.log(test);
+delete test;
+//    console.log(test);// 报错
+console.log(window.test);// undefined
+</code></pre><p>###2.删除指定对象的属性<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//删除对象中指定的属性</div><div class="line">var obj = &#123;</div><div class="line">    name : &quot;zs&quot;,</div><div class="line">    age : 20</div><div class="line">&#125;;</div><div class="line"></div><div class="line">console.log(obj.name);//zs</div><div class="line">console.log(delete obj.name);// true</div><div class="line">console.log(obj.name); // undefined</div></pre></td></tr></table></figure></p>
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意:"></a>注意:</h4><pre><code>3.未用var声明的变量,自动成为window的属性
 
-        <div class="article-info info-on-right">
-          
-          
+4.delete返回一个布尔值(能删除true,否则false)
+</code></pre>
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/09/23/关于delete关键字的用法/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/23/js排他的方法/" class="archive-article-date">
-  	<time datetime="2017-09-23T05:36:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-23</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2017/09/23/js排他的方法/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">js排他的方法</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/23/js排他的方法/">js排他的方法</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -246,8 +340,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
