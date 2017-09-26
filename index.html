@@ -364,6 +364,224 @@ document.body.clientHeight;
 
 
   
+    <article id="post-关于delete关键字的用法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/23/关于delete关键字的用法/">delete关键字的用法</a>
+    </h1>
+  
+
+        
+        <a href="/2017/09/23/关于delete关键字的用法/" class="archive-article-date">
+  	<time datetime="2017-09-23T05:52:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="delete关键字"><a href="#delete关键字" class="headerlink" title="delete关键字"></a>delete关键字</h1><p>用法: delete 对象.属性</p>
+<h3 id="1-可以删除未用var声明的变量"><a href="#1-可以删除未用var声明的变量" class="headerlink" title="1.可以删除未用var声明的变量"></a>1.可以删除未用var声明的变量</h3><pre><code>test = &quot;这是一个未使用var定义的变量&quot;;
+console.log(test);
+delete test;
+//    console.log(test);// 报错
+console.log(window.test);// undefined
+</code></pre><h3 id="2-删除指定对象的属性"><a href="#2-删除指定对象的属性" class="headerlink" title="2.删除指定对象的属性"></a>2.删除指定对象的属性</h3><pre><code>//删除对象中指定的属性
+var obj = {
+    name : &quot;zs&quot;,
+    age : 20
+};
+
+console.log(obj.name);//zs
+console.log(delete obj.name);// true
+console.log(obj.name); // undefined
+</code></pre><hr>
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意:"></a>注意:</h4><hr>
+<pre><code>3.未用var声明的变量,自动成为window的属性
+
+4.delete返回一个布尔值(能删除true,否则false)
+</code></pre><hr>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">delete 关键字</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/09/23/关于delete关键字的用法/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-js排他的方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/23/js排他的方法/">js排他的方法</a>
+    </h1>
+  
+
+        
+        <a href="/2017/09/23/js排他的方法/" class="archive-article-date">
+  	<time datetime="2017-09-23T05:36:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="排他方法的几个方法"><a href="#排他方法的几个方法" class="headerlink" title="排他方法的几个方法"></a>排他方法的几个方法</h1><h3 id="1-for循环遍历"><a href="#1-for循环遍历" class="headerlink" title="1.for循环遍历"></a>1.for循环遍历</h3><p>​    原理:先将所有要遍历的元素的类名或样式清空;再将当前元素添加类名或者样式</p>
+<h2 id="​"><a href="#​" class="headerlink" title="​      "></a>​      </h2><pre><code>for(var i = 0; i&lt;list.length;i++){
+    (function (index) {
+        var li = list[index];
+        li.onmouseover = function () {
+            // 1.清空所有
+            for(var j = 0; j&lt;list.length; j++){
+                list[j].className = &apos;&apos;
+            }
+            // 2.设置当前
+            li.className = &apos;current&apos;;
+        }
+    })(i);
+}
+</code></pre><hr>
+<h3 id="2-记录选中元素的索引"><a href="#2-记录选中元素的索引" class="headerlink" title="2.记录选中元素的索引"></a>2.记录选中元素的索引</h3><p>​    原理:用for循环遍历要切换的元素,设置当前选中的元素的类名,记录当前选中元素的类名,下一次循环的时候将上一次记录的索引的元素的类名清空,再设置当前元素的类名,如此类推…</p>
+<hr>
+<pre><code>var seleIndex = 0;
+for(var i = 0; i&lt;list.length;i++){
+    (function (index) {
+        var li = list[index];
+        li.onmouseover = function () {
+            // 1.清空上一次的选中
+            list[seleIndex].className = &apos;&apos;;
+            // 2.设置当前
+            li.className = &apos;current&apos;;
+            // 3.更新当前选中的索引
+            seleIndex = index;
+        }
+    })(i);
+}
+</code></pre><hr>
+<h3 id="3-记录选中的标签"><a href="#3-记录选中的标签" class="headerlink" title="3.记录选中的标签"></a>3.记录选中的标签</h3><p>​    原理:其实原理跟上面差不多,只是将记录索引变成了记录标签.   i = 0 时就是遍历第一个标签时,默认选中第一个标签,然后就是跟上面情况差不多了, 先清空上一次设置的样式,再设置当前标签的样式,然后记录当前标签,下一次遍历的时候就先清空上一次设置的样式,再设置当前标签的样式.(标签就是元素嘛)</p>
+<hr>
+<pre><code>var seleEle = null;
+for(var i = 0; i&lt;list.length;i++){
+    var li = list[i];
+    if(i == 0){
+        // 记录选中的标签
+        seleEle = li;
+    }
+    li.onmouseover = function () {
+        // 1.清空上一次的选中
+        seleEle.className = &apos;&apos;;
+        // 2.设置当前
+        this.className = &apos;current&apos;;
+        // 3.记录当前选中的标签
+        seleEle = this;
+    }
+}
+</code></pre><hr>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">js 排他</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/09/23/js排他的方法/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
   
 
 
@@ -458,6 +676,22 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">js offset/scroll/client</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">delete</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">js 排他</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">delete 关键字</a>
               </li>
             
             <div class="clearfix"></div>
