@@ -6,20 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>js排他的方法 | Zooz&#39;s blog</title>
+  <title>Tag: delete | Zooz&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="排他方法的几个方法1.for循环遍历​    原理:先将所有要遍历的元素的类名或样式清空;再将当前元素添加类名或者样式">
-<meta name="keywords" content="js,排他">
-<meta property="og:type" content="article">
-<meta property="og:title" content="js排他的方法">
-<meta property="og:url" content="http://yoursite.com/2017/09/23/js排他的方法/index.html">
+  <meta name="description" content="14级广东金融学院,擅长各项前端技能">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Zooz&#39;s blog">
+<meta property="og:url" content="http://yoursite.com/tags/delete/index.html">
 <meta property="og:site_name" content="Zooz&#39;s blog">
-<meta property="og:description" content="排他方法的几个方法1.for循环遍历​    原理:先将所有要遍历的元素的类名或样式清空;再将当前元素添加类名或者样式">
+<meta property="og:description" content="14级广东金融学院,擅长各项前端技能">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-09-29T05:40:38.385Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="js排他的方法">
-<meta name="twitter:description" content="排他方法的几个方法1.for循环遍历​    原理:先将所有要遍历的元素的类名或样式清空;再将当前元素添加类名或者样式">
+<meta name="twitter:title" content="Zooz&#39;s blog">
+<meta name="twitter:description" content="14级广东金融学院,擅长各项前端技能">
   
     <link rel="alternative" href="/atom.xml" title="Zooz&#39;s blog" type="application/atom+xml">
   
@@ -159,244 +157,64 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-js排他的方法" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      js排他的方法
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/09/23/关于delete关键字的用法/" class="archive-article-date">
+  	<time datetime="2017-09-23T05:52:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-23</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/09/23/关于delete关键字的用法/">delete关键字的用法</a>
     </h1>
   
 
-        
-        <a href="/2017/09/23/js排他的方法/" class="archive-article-date">
-  	<time datetime="2017-09-23T05:36:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="排他方法的几个方法"><a href="#排他方法的几个方法" class="headerlink" title="排他方法的几个方法"></a>排他方法的几个方法</h1><h3 id="1-for循环遍历"><a href="#1-for循环遍历" class="headerlink" title="1.for循环遍历"></a>1.for循环遍历</h3><p>​    原理:先将所有要遍历的元素的类名或样式清空;再将当前元素添加类名或者样式<br><a id="more"></a></p>
-<hr>
-<pre><code>for(var i = 0; i&lt;list.length;i++){
-    (function (index) {
-        var li = list[index];
-        li.onmouseover = function () {
-            // 1.清空所有
-            for(var j = 0; j&lt;list.length; j++){
-                list[j].className = &apos;&apos;
-            }
-            // 2.设置当前
-            li.className = &apos;current&apos;;
-        }
-    })(i);
-}
-</code></pre><hr>
-<h3 id="2-记录选中元素的索引"><a href="#2-记录选中元素的索引" class="headerlink" title="2.记录选中元素的索引"></a>2.记录选中元素的索引</h3><p>​    原理:用for循环遍历要切换的元素,设置当前选中的元素的类名,记录当前选中元素的类名,下一次循环的时候将上一次记录的索引的元素的类名清空,再设置当前元素的类名,如此类推…</p>
-<hr>
-<pre><code>var seleIndex = 0;
-for(var i = 0; i&lt;list.length;i++){
-    (function (index) {
-        var li = list[index];
-        li.onmouseover = function () {
-            // 1.清空上一次的选中
-            list[seleIndex].className = &apos;&apos;;
-            // 2.设置当前
-            li.className = &apos;current&apos;;
-            // 3.更新当前选中的索引
-            seleIndex = index;
-        }
-    })(i);
-}
-</code></pre><hr>
-<h3 id="3-记录选中的标签"><a href="#3-记录选中的标签" class="headerlink" title="3.记录选中的标签"></a>3.记录选中的标签</h3><p>​    原理:其实原理跟上面差不多,只是将记录索引变成了记录标签.   i = 0 时就是遍历第一个标签时,默认选中第一个标签,然后就是跟上面情况差不多了, 先清空上一次设置的样式,再设置当前标签的样式,然后记录当前标签,下一次遍历的时候就先清空上一次设置的样式,再设置当前标签的样式.(标签就是元素嘛)</p>
-<hr>
-<pre><code>var seleEle = null;
-for(var i = 0; i&lt;list.length;i++){
-    var li = list[i];
-    if(i == 0){
-        // 记录选中的标签
-        seleEle = li;
-    }
-    li.onmouseover = function () {
-        // 1.清空上一次的选中
-        seleEle.className = &apos;&apos;;
-        // 2.设置当前
-        this.className = &apos;current&apos;;
-        // 3.记录当前选中的标签
-        seleEle = this;
-    }
-}
-</code></pre><hr>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢老板!<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/weChat_pay.png">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">delete</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">排他</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">关键字</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/09/23/js排他的方法/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2017/09/23/关于delete关键字的用法/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          delete关键字的用法
-        
-      </div>
-    </a>
   
   
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#排他方法的几个方法"><span class="toc-number">1.</span> <span class="toc-text">排他方法的几个方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-for循环遍历"><span class="toc-number">1.0.1.</span> <span class="toc-text">1.for循环遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-记录选中元素的索引"><span class="toc-number">1.0.2.</span> <span class="toc-text">2.记录选中元素的索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-记录选中的标签"><span class="toc-number">1.0.3.</span> <span class="toc-text">3.记录选中的标签</span></a></li></ol></li></ol></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -419,9 +237,9 @@ for(var i = 0; i&lt;list.length;i++){
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
