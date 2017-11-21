@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: delete | Zooz&#39;s blog</title>
+  <title>二分查找/二分排序 | Zooz&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="14级广东金融学院,擅长各项前端技能">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Zooz&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/tags/delete/index.html">
+  <meta name="description" content="二分法二分法排序二分法排序(非递归) //将需要排序的数组的第一个给新的数组; //遍历要排序的数组; //定义左边的值为新数组的第一个(left = 0),右边的值为新数组的最后一个(right = newArr.length); //遍历新的数组; //定义新数组的中间值;(mid = Math.floor((left + right) / 2)) //(必须是先遍历新数组,不然中间值不能随着">
+<meta name="keywords" content="二分,查找,排序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="二分查找&#x2F;二分排序">
+<meta property="og:url" content="http://yoursite.com/2017/11/17/二分查找-二分排序/index.html">
 <meta property="og:site_name" content="Zooz&#39;s blog">
-<meta property="og:description" content="14级广东金融学院,擅长各项前端技能">
+<meta property="og:description" content="二分法二分法排序二分法排序(非递归) //将需要排序的数组的第一个给新的数组; //遍历要排序的数组; //定义左边的值为新数组的第一个(left = 0),右边的值为新数组的最后一个(right = newArr.length); //遍历新的数组; //定义新数组的中间值;(mid = Math.floor((left + right) / 2)) //(必须是先遍历新数组,不然中间值不能随着">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-11-21T05:28:44.109Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Zooz&#39;s blog">
-<meta name="twitter:description" content="14级广东金融学院,擅长各项前端技能">
+<meta name="twitter:title" content="二分查找&#x2F;二分排序">
+<meta name="twitter:description" content="二分法二分法排序二分法排序(非递归) //将需要排序的数组的第一个给新的数组; //遍历要排序的数组; //定义左边的值为新数组的第一个(left = 0),右边的值为新数组的最后一个(right = newArr.length); //遍历新的数组; //定义新数组的中间值;(mid = Math.floor((left + right) / 2)) //(必须是先遍历新数组,不然中间值不能随着">
   
     <link rel="alternative" href="/atom.xml" title="Zooz&#39;s blog" type="application/atom+xml">
   
@@ -157,64 +159,264 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-二分查找-二分排序" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/23/关于delete关键字的用法/" class="archive-article-date">
-  	<time datetime="2017-09-23T05:52:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-23</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/23/关于delete关键字的用法/">delete关键字的用法</a>
+    <h1 class="article-title" itemprop="name">
+      二分查找/二分排序
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/11/17/二分查找-二分排序/" class="archive-article-date">
+  	<time datetime="2017-11-17T10:58:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="二分法"><a href="#二分法" class="headerlink" title="二分法"></a>二分法</h1><h2 id="二分法排序"><a href="#二分法排序" class="headerlink" title="二分法排序"></a>二分法排序</h2><p><strong>二分法排序(非递归)</strong></p>
+<pre><code>//将需要排序的数组的第一个给新的数组;
+//遍历要排序的数组;
+//定义左边的值为新数组的第一个(left = 0),右边的值为新数组的最后一个(right = newArr.length);
+//遍历新的数组;
+//定义新数组的中间值;(mid = Math.floor((left + right) / 2))
+//(必须是先遍历新数组,不然中间值不能随着新数组的变化而变化)
+//将要排序的数组的每一个跟新数组的中间值比较;
+//如果需要插入的项大于新数组的中间值,则要插入的位置在右边,让left = mid +1,否则 right = mid
+//当left ==right时就找到插入的位置,进行下一次循环插入(需要重置left,right)
+function binary1(arr) {
+    var left = 0, right = 0, mid = 0;
+    var newArr = [];
+    newArr[0] = arr [0];
+    for (var i = 1; i &lt; arr.length; i++) {
+        left = 0;
+        right = newArr.length;
+        for (var j = 0; j &lt; newArr.length; j++) {
+            mid = Math.floor((left + right) / 2);//新数组的中间值的索引
+            if (arr[i] &gt; newArr[mid]) {//要插入的位置在右边
+                left = mid + 1;
+            } else {//要插入的位置在左边
+                right = mid;
+            }
+            if (left == right) {//找到要插入的位置
+                newArr.splice(left, 0, arr[i]);
+                break;
+            }
+        }
+    }
+    console.log(newArr);
+}
+//binary1([2,4,6,5,1,7,23]);
+</code></pre><h2 id="二分法查找"><a href="#二分法查找" class="headerlink" title="二分法查找"></a>二分法查找</h2><p><strong>二分法查找(在有序数组中查找)</strong></p>
+<pre><code>//让left=0,right=arr.length;
+//遍历(left,right)范围内的数组;
+//定义中间值mid;
+//如果目标大于数组的中间值,则要查找的目标在右边,让left = mid +1,否则 right = mid;
+//当目标等于中间值时找到要查找的目标
+function binarySearch(arr, target) {
+    var left = 0;
+    var right = arr.length;
+    var mid;
+    for (var i = left; i &lt; right; i++) {
+        mid = Math.floor((left + right) / 2);
+        if (target &gt; arr[mid]) {
+            left = mid + 1;
+        } else if (target &lt; arr[mid]) {
+            right = mid;
+        } else {
+            console.log(target + &quot;在第&quot; + mid + &quot;个&quot;);
+            return;
+        }
+    }
+}
+//binarySearch([1,2,4,5,6,7,23],6);
+</code></pre><p><strong>二分法查找(递归)–本质跟上面差不多</strong></p>
+<pre><code>//根据left,right定义中间值;
+//若目标大于中间值则目标在右侧,小于则在左边,更改left和right的值进行递归调用;
+//当目标等于中间值时找到要查找的目标
+function binarySearch1(arr, target, left, right) {
+
+    var mid = Math.floor((left + right) / 2);
+    if (target &gt; arr[mid]) {
+        binarySearch1(arr, target, mid + 1, right);
+    } else if (target &lt; arr[mid]) {
+        binarySearch1(arr, target, left, mid);
+    } else {
+        console.log(target + &quot;在第&quot; + mid + &quot;个&quot;);
+        return;
+    }
+}
+</code></pre>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢老板!<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weChat_pay.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">delete</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">二分</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">关键字</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">查找</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">排序</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/11/17/二分查找-二分排序/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/11/17/数组去重/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">js数组去重</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#二分法"><span class="toc-number">1.</span> <span class="toc-text">二分法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#二分法排序"><span class="toc-number">1.1.</span> <span class="toc-text">二分法排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二分法查找"><span class="toc-number">1.2.</span> <span class="toc-text">二分法查找</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -237,9 +439,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

@@ -159,6 +159,646 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-二分查找-二分排序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/17/二分查找-二分排序/">二分查找/二分排序</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/17/二分查找-二分排序/" class="archive-article-date">
+  	<time datetime="2017-11-17T10:58:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="二分法"><a href="#二分法" class="headerlink" title="二分法"></a>二分法</h1><h2 id="二分法排序"><a href="#二分法排序" class="headerlink" title="二分法排序"></a>二分法排序</h2><p><strong>二分法排序(非递归)</strong></p>
+<pre><code>//将需要排序的数组的第一个给新的数组;
+//遍历要排序的数组;
+//定义左边的值为新数组的第一个(left = 0),右边的值为新数组的最后一个(right = newArr.length);
+//遍历新的数组;
+//定义新数组的中间值;(mid = Math.floor((left + right) / 2))
+//(必须是先遍历新数组,不然中间值不能随着新数组的变化而变化)
+//将要排序的数组的每一个跟新数组的中间值比较;
+//如果需要插入的项大于新数组的中间值,则要插入的位置在右边,让left = mid +1,否则 right = mid
+//当left ==right时就找到插入的位置,进行下一次循环插入(需要重置left,right)
+function binary1(arr) {
+    var left = 0, right = 0, mid = 0;
+    var newArr = [];
+    newArr[0] = arr [0];
+    for (var i = 1; i &lt; arr.length; i++) {
+        left = 0;
+        right = newArr.length;
+        for (var j = 0; j &lt; newArr.length; j++) {
+            mid = Math.floor((left + right) / 2);//新数组的中间值的索引
+            if (arr[i] &gt; newArr[mid]) {//要插入的位置在右边
+                left = mid + 1;
+            } else {//要插入的位置在左边
+                right = mid;
+            }
+            if (left == right) {//找到要插入的位置
+                newArr.splice(left, 0, arr[i]);
+                break;
+            }
+        }
+    }
+    console.log(newArr);
+}
+//binary1([2,4,6,5,1,7,23]);
+</code></pre><h2 id="二分法查找"><a href="#二分法查找" class="headerlink" title="二分法查找"></a>二分法查找</h2><p><strong>二分法查找(在有序数组中查找)</strong></p>
+<pre><code>//让left=0,right=arr.length;
+//遍历(left,right)范围内的数组;
+//定义中间值mid;
+//如果目标大于数组的中间值,则要查找的目标在右边,让left = mid +1,否则 right = mid;
+//当目标等于中间值时找到要查找的目标
+function binarySearch(arr, target) {
+    var left = 0;
+    var right = arr.length;
+    var mid;
+    for (var i = left; i &lt; right; i++) {
+        mid = Math.floor((left + right) / 2);
+        if (target &gt; arr[mid]) {
+            left = mid + 1;
+        } else if (target &lt; arr[mid]) {
+            right = mid;
+        } else {
+            console.log(target + &quot;在第&quot; + mid + &quot;个&quot;);
+            return;
+        }
+    }
+}
+//binarySearch([1,2,4,5,6,7,23],6);
+</code></pre><p><strong>二分法查找(递归)–本质跟上面差不多</strong></p>
+<pre><code>//根据left,right定义中间值;
+//若目标大于中间值则目标在右侧,小于则在左边,更改left和right的值进行递归调用;
+//当目标等于中间值时找到要查找的目标
+function binarySearch1(arr, target, left, right) {
+
+    var mid = Math.floor((left + right) / 2);
+    if (target &gt; arr[mid]) {
+        binarySearch1(arr, target, mid + 1, right);
+    } else if (target &lt; arr[mid]) {
+        binarySearch1(arr, target, left, mid);
+    } else {
+        console.log(target + &quot;在第&quot; + mid + &quot;个&quot;);
+        return;
+    }
+}
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">二分</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">查找</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">排序</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/17/二分查找-二分排序/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-数组去重" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/17/数组去重/">js数组去重</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/17/数组去重/" class="archive-article-date">
+  	<time datetime="2017-11-17T10:55:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h1><hr>
+<pre><code>//方法一:新建一个数组,用for循环遍历数组;
+使用indexOf()检查新的数组有没有当前元素;
+没有则返回-1,然后push进新的数组;
+function fn(arr) {
+    var newArr = [arr[0]];
+    for (var i = 1; i &lt; arr.length - 1; i++) {
+        if (newArr.indexOf(arr[i]) == -1) {
+            newArr.push(arr[i]);
+        }
+    }
+    return newArr;
+}
+</code></pre>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数组</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">去重</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/17/数组去重/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-px,em和rem的区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/17/px,em和rem的区别/">px/em/rem的区别</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/17/px,em和rem的区别/" class="archive-article-date">
+  	<time datetime="2017-11-17T10:54:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="px-em-rem的区别"><a href="#px-em-rem的区别" class="headerlink" title="px/em/rem的区别"></a>px/em/rem的区别</h1><h2 id="px"><a href="#px" class="headerlink" title="px"></a>px</h2><p>px(Pixel)像素,相对长度单位,px是相对于显示器屏幕分辨率而言的.</p>
+<pre><code>px特点:
+1. ie无法调整那些使用px作为单位的呃字体大小;
+2. 国外的大部分网站能够调整的原因在于使用了em或rem作为字体单位;
+3. Firefox能够调整px和em，rem，但是96%以上的中国网民使用IE浏览器(或内核)。
+</code></pre>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/17/px,em和rem的区别/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-flow-babel-typeScript的分别阐述" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/17/flow-babel-typeScript的分别阐述/">flow/babel/typeScript的分别阐述</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/17/flow-babel-typeScript的分别阐述/" class="archive-article-date">
+  	<time datetime="2017-11-17T10:51:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="flow-babel-typeScript的阐述"><a href="#flow-babel-typeScript的阐述" class="headerlink" title="flow/babel/typeScript的阐述;"></a>flow/babel/typeScript的阐述;</h3><pre><code>TypeScript 相当于一个 Web 开发经典套餐：
+TypeScript  包含了最新（甚至还在讨论中）的 es 特性；
+TypeScript 包含了xml in js（.tsx）；
+TypeScript 包含了静态类型检查。
+
+而 Babel 相当于一个自助餐：
+你最新的 es 特性？有别人帮你写好了，自己去找就行；
+xml in js？也有人帮你写好了，自己去找吧；
+静态类型检查？同样有人帮你写好了，再去找找看吧。
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">flow</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">bable</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">typeScript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/17/flow-babel-typeScript的分别阐述/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-http的事务过程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/17/http的事务过程/">http的事务过程</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/17/http的事务过程/" class="archive-article-date">
+  	<time datetime="2017-11-17T10:48:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>域名解析 –&gt; 发起TCP的3次握手 –&gt; 建立TCP连接后发起http请求 –&gt; 服务器响应http请求，浏览器得到html代码 –&gt; 浏览器解析html代码，并请求html代码中的资源（如js、css、图片等） –&gt; 浏览器对页面进行渲染呈现给用户</strong><br>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">http</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/17/http的事务过程/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-前端面试题总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/17/前端面试题总结/">数组去重的方法--11.17</a>
+    </h1>
+  
+
+        
+        <a href="/2017/11/17/前端面试题总结/" class="archive-article-date">
+  	<time datetime="2017-11-17T08:27:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#2017.11.17</p>
+<h3 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h3><h3 id="http的事务过程"><a href="#http的事务过程" class="headerlink" title="http的事务过程"></a>http的事务过程</h3><h3 id="链接跳转的方式"><a href="#链接跳转的方式" class="headerlink" title="链接跳转的方式"></a>链接跳转的方式</h3><h3 id="rem和px的区别"><a href="#rem和px的区别" class="headerlink" title="rem和px的区别"></a>rem和px的区别</h3><h3 id="document-write-和script结合显示标签"><a href="#document-write-和script结合显示标签" class="headerlink" title="document.write()和script结合显示标签"></a>document.write()和script结合显示标签</h3>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">面试题</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数组</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">去重</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/11/17/前端面试题总结/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-冒泡排序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/26/冒泡排序/">冒泡排序</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/26/冒泡排序/" class="archive-article-date">
+  	<time datetime="2017-10-26T05:35:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://www.cnblogs.com/beli/p/6297741.html" target="_blank" rel="external">https://www.cnblogs.com/beli/p/6297741.html</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">排序</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">冒泡</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/26/冒泡排序/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-js三大家族" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -501,7 +1141,63 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">flow</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">bable</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">typeScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">二分</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">查找</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">排序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">http</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">冒泡</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">面试题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">数组</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">去重</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">排他</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">delete</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">关键字</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -514,18 +1210,6 @@ getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(argumen
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">client</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">delete</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">关键字</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">排他</a>
               </li>
             
             <div class="clearfix"></div>
